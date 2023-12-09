@@ -12,7 +12,7 @@ export const Card = styled.div`
   width: fit-content;
   margin-top: 72px;
   padding: 32px 48px;
-  
+
   background: #1f2124;
   border: 1px solid #cb9bde;
   border-radius: 6px;
@@ -81,9 +81,17 @@ export const ButtonPrimary = styled.button`
   &:hover {
     background: rgb(130, 87, 229);
   }
+  &:disabled {
+    background: rgb(130, 87, 229);
+    transition: 0.3s;
+  }
 `;
 
 export const ButtonSecondary = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   transition: 0.3s;
   width: 100%;
   height: 100%;
@@ -106,18 +114,19 @@ export const ButtonSecondary = styled.button`
   }
 `;
 
-export const LinkPrimary = styled.a`
+export const LinkPrimary = styled.div`
   transition: 0.3s;
   cursor: pointer;
   color: #cb9bde;
   font-size: 14px;
+  text-decoration: none;
 
   &:hover {
     color: #cfcfd8;
   }
 `;
 
-export const LinkSecondary = styled.a`
+export const LinkSecondary = styled.div`
   transition: 0.3s;
   cursor: pointer;
   color: #cb9bde;
@@ -133,7 +142,7 @@ export const Divisao = styled.div`
   height: 0px;
   border-bottom: 2px solid #cb9bde;
   background: unset;
-  margin: 16px 0px
+  margin: 16px 0px;
 `;
 
 export const IconGoogle = styled.img`
@@ -141,4 +150,3 @@ export const IconGoogle = styled.img`
   height: 20px;
   margin-right: 5px;
 `;
-

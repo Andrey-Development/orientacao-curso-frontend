@@ -2,24 +2,25 @@ import styled from "styled-components";
 
 export const AreaInput = styled.div`
   display: flex;
-  flex-direction: column;
-  margin-bottom: 8px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 8px;
+  margin-top: 16px;
 `;
 
-export const LabelInput = styled.label`
-  font-size: 12px;
-  letter-spacing: 1px;
+export const LabelLarge = styled.label`
+  font-size: 14px;
+  letter-spacing: 3px;
   color: #cfcfd8;
 `;
 
 export const InputStyled = styled.input`
-  width: 250px;
-  height: 28px;
-  border: none;
-  border-bottom: 2px solid #cb9bde;
+  height: 20px;
+  border-radius: 6px 6px 0px 0px;
   background: unset;
   color: #cfcfd8;
-  font-size: 14px;
+  font-size: 12px;
 
   &::placeholder {
     font-size: 12px;

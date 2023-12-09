@@ -2,26 +2,21 @@ import { useContext, useState } from 'react';
 import { UserContext } from '../../contexts/AuthContext';
 import GoogleIcon from '/img/google-logo.svg';
 import InputCustomizado from '../../components/Input';
+import Loader from '../../components/Loader';
 import {
   Container
   , Card
   , AreaInput
-  , LabelInput
-  , Input
   , Title
   , AreaButton
   , ButtonPrimary
-  , ButtonSecondary
   , LinkPrimary
   , LinkSecondary
-  , Divisao
-  , IconGoogle
 } from './styles';
+import { Link } from 'react-router-dom';
 
 function Login() {
-  const { logIn } = useContext(UserContext);
-  const [email, setEmail] = useState('');
-  const [passwowrd, setPasswowrd] = useState('');
+  const { loading, logIn, user, setUser } = useContext(UserContext);
 
   return (
     <Container>
@@ -32,9 +27,9 @@ function Login() {
           name='email'
           type='email'
           placeholder='Digite seu E-mail...'
-          value={email}
+          value={user.email}
           onChange={(value) => {
-            setEmail(value.currentTarget.value);
+            setUser({ ...user, email: value.currentTarget.value });
           }}
         />
         <InputCustomizado
@@ -43,26 +38,34 @@ function Login() {
           type='password'
           placeholder='********'
           maxLength={16}
-          value={passwowrd}
+          value={user.password}
           onChange={(value) => {
-            setPasswowrd(value.currentTarget.value);
+            setUser({ ...user, password: value.currentTarget.value });
           }}
         />
         <AreaButton>
-          <ButtonPrimary onClick={() => {
-            logIn({email: email, passwowrd: passwowrd})
-          }}
-          >
-            Entrar
-          </ButtonPrimary>
+          {loading ? (
+            <ButtonPrimary type='submit' disabled>
+              <Loader />
+            </ButtonPrimary>
+          ) : (
+            <ButtonPrimary type='submit' onClick={() => {
+              logIn();
+            }}
+            >
+              Entrar
+            </ButtonPrimary>
+          )}
         </AreaButton>
         <AreaInput>
           <LinkSecondary>Esqueceu sua Senha?</LinkSecondary>
         </AreaInput>
         <AreaButton>
-          <LinkPrimary>Criar uma conta agorar!</LinkPrimary>
-          <Divisao />
-          <ButtonSecondary><IconGoogle src={GoogleIcon} />Entrar com o Google</ButtonSecondary>
+          <Link to="/cadastre-se">
+            <LinkPrimary>Crie sua conta agorar!</LinkPrimary>
+          </Link>
+          {/* <Divisao /> */}
+          {/* <ButtonSecondary><IconGoogle src={GoogleIcon} />Entrar com o Google</ButtonSecondary> */}
         </AreaButton>
       </Card>
     </Container>

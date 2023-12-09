@@ -12,6 +12,11 @@ export const GlobalStyle = createGlobalStyle`
     height: 100vh;
     background-color: #242424;
     font-family: Red Hat Display;
+    overflow: hidden;
+  }
+
+  #root {
+    overflow: hidden;
   }
 
   *:focus-visible {

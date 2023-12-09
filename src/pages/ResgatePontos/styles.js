@@ -1,42 +1,18 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
-  height: max-content;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 32px 48px;
-  
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: 80%;
-
-  &::-webkit-scrollbar {
-    width: 6px; /* Largura da barra de rolagem */
-    }
-    &::-webkit-scrollbar-thumb {
-    background-color: #888; /* Cor da alça da barra de rolagem */
-    border-radius: 3px; /* Raio da alça da barra de rolagem */
-    }
-
-    &::-moz-scrollbar {
-    width: 6px; /* Largura da barra de rolagem */
-    }
-    &::-moz-scrollbar-thumb {
-    background-color: #888; /* Cor da alça da barra de rolagem */
-    border-radius: 3px; /* Raio da alça da barra de rolagem */
-    }
 `;
 
 export const Card = styled.div`
   width: fit-content;
-  max-height: 500px;
-  max-width: 500px;
-  overflow-y: auto;
-  margin-top: 24px;
-  padding: 16px 24px;
+  margin-top: 72px;
+  padding: 32px 48px;
+  
   background: #1f2124;
   border: 1px solid #cb9bde;
   border-radius: 6px;
@@ -54,13 +30,6 @@ export const AreaInput = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 8px;
-`;
-
-export const LabelLarge = styled.label`
-  font-size: 18px;
-  letter-spacing: 3px;
-  color: #cfcfd8;
-  margin-bottom: 10;
 `;
 
 export const LabelInput = styled.label`
@@ -87,9 +56,8 @@ export const Input = styled.input`
 
 export const AreaButton = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
   margin: 16px 0px 8px 0px;
 `;
 
@@ -116,6 +84,10 @@ export const ButtonPrimary = styled.button`
 `;
 
 export const ButtonSecondary = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   transition: 0.3s;
   width: 100%;
   height: 100%;

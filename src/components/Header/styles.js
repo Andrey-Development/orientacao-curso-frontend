@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const HeaderView = styled.div`
-  height: 82px;
+  width: 100vw;
+  height: 72px;
   display: flex;
   justify-content: space-between;
   padding: 8px 16px;
@@ -21,9 +22,23 @@ export const LogoImg = styled.img`
 `;
 
 export const ButtonPrimary = styled.button`
-  color: #fbfbfe;
-  background: unset;
-  border: 1px solid #878789;
+  transition: 0.3s;
+  width: fit-content;
+  height: fit-content;
+
+  cursor: pointer;
+  border: 1px solid #f6f4fa;
   border-radius: 6px;
+  background: unset;
+
+  color: #f6f4fa;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+
   padding: 8px 12px;
+
+  &:hover {
+    background: rgb(130, 87, 229);
+  }
 `;

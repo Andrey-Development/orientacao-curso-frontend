@@ -2,38 +2,36 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: max-content;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 32px 48px;
-  
+
   overflow-y: auto;
-  overflow-x: hidden;
-  height: 80%;
 
   &::-webkit-scrollbar {
     width: 6px; /* Largura da barra de rolagem */
-    }
-    &::-webkit-scrollbar-thumb {
+  }
+  &::-webkit-scrollbar-thumb {
     background-color: #888; /* Cor da alça da barra de rolagem */
     border-radius: 3px; /* Raio da alça da barra de rolagem */
-    }
+  }
 
-    &::-moz-scrollbar {
+  &::-moz-scrollbar {
     width: 6px; /* Largura da barra de rolagem */
-    }
-    &::-moz-scrollbar-thumb {
+  }
+  &::-moz-scrollbar-thumb {
     background-color: #888; /* Cor da alça da barra de rolagem */
     border-radius: 3px; /* Raio da alça da barra de rolagem */
-    }
+  }
 `;
 
 export const Card = styled.div`
   width: fit-content;
   max-height: 500px;
-  max-width: 500px;
+  max-width: 600px;
   overflow-y: auto;
   margin-top: 24px;
   padding: 16px 24px;
@@ -91,6 +89,14 @@ export const AreaButton = styled.div`
   align-items: center;
   gap: 8px;
   margin: 16px 0px 8px 0px;
+`;
+
+export const VerticalCentered = styled.div`
+  height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ButtonPrimary = styled.button`
@@ -166,7 +172,7 @@ export const Divisao = styled.div`
   height: 0px;
   border-bottom: 2px solid #cb9bde;
   background: unset;
-  margin: 16px 0px
+  margin: 16px 0px;
 `;
 
 export const IconGoogle = styled.img`
@@ -174,4 +180,3 @@ export const IconGoogle = styled.img`
   height: 20px;
   margin-right: 5px;
 `;
-
