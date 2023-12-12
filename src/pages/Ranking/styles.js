@@ -8,32 +8,39 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   padding: 32px 48px;
-  
+
   overflow-y: auto;
   overflow-x: hidden;
   height: 80%;
 
   &::-webkit-scrollbar {
     width: 6px; /* Largura da barra de rolagem */
-    }
-    &::-webkit-scrollbar-thumb {
+  }
+  &::-webkit-scrollbar-thumb {
     background-color: #888; /* Cor da alça da barra de rolagem */
     border-radius: 3px; /* Raio da alça da barra de rolagem */
-    }
+  }
 
-    &::-moz-scrollbar {
+  &::-moz-scrollbar {
     width: 6px; /* Largura da barra de rolagem */
-    }
-    &::-moz-scrollbar-thumb {
+  }
+  &::-moz-scrollbar-thumb {
     background-color: #888; /* Cor da alça da barra de rolagem */
     border-radius: 3px; /* Raio da alça da barra de rolagem */
-    }
+  }
+`;
+
+export const VerticalCentered = styled.div`
+  height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Card = styled.div`
-  width: fit-content;
-  max-height: 500px;
-  max-width: 500px;
+  width: 100%;
+  max-width: 800px;
   overflow-y: auto;
   margin-top: 24px;
   padding: 16px 24px;
@@ -52,7 +59,11 @@ export const Title = styled.h1`
 
 export const AreaInput = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 4px;
+  border-bottom: solid 1px #cb9bde;
   margin-bottom: 8px;
 `;
 
@@ -60,7 +71,23 @@ export const LabelLarge = styled.label`
   font-size: 18px;
   letter-spacing: 3px;
   color: #cfcfd8;
-  margin-bottom: 10;
+`;
+
+export const HeaderRanking = styled.label`
+  min-width: 100px;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  font-weight: 600;
+  text-align: center;
+  color: #cfcfd8;
+`;
+
+export const LabelRanking = styled.label`
+  min-width: 100px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #cfcfd8;
 `;
 
 export const LabelInput = styled.label`
@@ -89,6 +116,7 @@ export const AreaButton = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   gap: 8px;
   margin: 16px 0px 8px 0px;
 `;
@@ -166,7 +194,7 @@ export const Divisao = styled.div`
   height: 0px;
   border-bottom: 2px solid #cb9bde;
   background: unset;
-  margin: 16px 0px
+  margin: 16px 0px;
 `;
 
 export const IconGoogle = styled.img`
@@ -174,4 +202,3 @@ export const IconGoogle = styled.img`
   height: 20px;
   margin-right: 5px;
 `;
-

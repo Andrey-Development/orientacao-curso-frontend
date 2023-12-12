@@ -61,9 +61,17 @@ export const LabelLarge = styled.label`
   margin-bottom: 10;
 `;
 
+export const LabelMedium = styled.label`
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  color: #cfcfd8;
+  margin-bottom: 10;
+`;
+
 export const LabelInput = styled.label`
   font-size: 12px;
   letter-spacing: 1px;
+  text-align: justify;
   color: #cfcfd8;
 `;
 
@@ -87,6 +95,15 @@ export const AreaButton = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 8px;
+  margin: 16px 0px 8px 0px;
+`;
+
+export const CardHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   gap: 8px;
   margin: 16px 0px 8px 0px;
 `;
@@ -117,6 +134,8 @@ export const ButtonPrimary = styled.button`
   padding: 12px 16px;
 
   &:hover {
+    background: rgb(130, 87, 229);
+  }&:disabled {
     background: rgb(130, 87, 229);
   }
 `;

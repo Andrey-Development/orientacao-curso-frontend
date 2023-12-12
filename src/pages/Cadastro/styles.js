@@ -10,6 +10,7 @@ export const Container = styled.div`
 
 export const Card = styled.div`
   width: fit-content;
+  min-width: 400px;
   margin-top: 72px;
   padding: 32px 48px;
   

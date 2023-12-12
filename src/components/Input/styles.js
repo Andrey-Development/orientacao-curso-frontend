@@ -13,7 +13,7 @@ export const LabelInput = styled.label`
 `;
 
 export const InputStyled = styled.input`
-  width: 250px;
+  width: 100%;
   height: 28px;
   border: none;
   border-bottom: 2px solid #cb9bde;

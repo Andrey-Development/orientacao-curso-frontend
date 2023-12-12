@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react';
 import { UserContext } from '../../contexts/AuthContext';
 import InputCustomizado from '../../components/Input';
 import {
@@ -9,21 +9,32 @@ import {
     , ButtonPrimary
 } from './styles';
 import { Link } from 'react-router-dom';
+import api from '../../services/api';
+import Dropdown from '../../components/Dropdown';
 
 function Cadastro() {
-    const { user, setUser } = useContext(UserContext);
-    
+    const { user, setUser, fectSchools, schools } = useContext(UserContext);
+    const [schoolSelected, setSchoolSelected] = useState(null);
+
     function onChangeValue(event) {
         const { name, value } = event.target;
         setUser({ ...user, [name]: value });
     }
+
+    useLayoutEffect(() => {
+        fectSchools();
+    }, []);
+
+    useEffect(() => {
+        setUser({ ...user, school_id: schoolSelected });
+    }, [schoolSelected]);
 
     return (
         <div>
             <Container>
                 <Card>
                     <Title>Dados Pessoais</Title>
-                    <InputCustomizado 
+                    <InputCustomizado
                         label='Nome'
                         name='name'
                         type='string'
@@ -31,7 +42,7 @@ function Cadastro() {
                         value={user.name}
                         onChange={onChangeValue}
                     />
-                    <InputCustomizado 
+                    <InputCustomizado
                         label='E-mail'
                         name='email'
                         type='email'
@@ -39,7 +50,12 @@ function Cadastro() {
                         value={user.email}
                         onChange={onChangeValue}
                     />
-                    <InputCustomizado 
+                    <Dropdown 
+                        selected={schoolSelected}
+                        setSelected={setSchoolSelected}
+                        items={schools}
+                    />
+                    <InputCustomizado
                         label='Senha'
                         name='password'
                         type='password'
@@ -47,7 +63,7 @@ function Cadastro() {
                         value={user.password}
                         onChange={onChangeValue}
                     />
-                    <InputCustomizado 
+                    <InputCustomizado
                         label='Confirmar Senha'
                         name='password_confirmation'
                         type='password'

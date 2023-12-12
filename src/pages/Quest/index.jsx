@@ -16,77 +16,95 @@ import {
   , LinkPrimary
   , LinkSecondary
   , Divisao
-  , IconGoogle
+  , AreaCheckbox
+  , VerticalCentered
+  , InputStyled
 } from './styles';
+import { QuestsContext } from '../../contexts/QuestsContext';
+import Loader from '../../components/Loader';
 
 function Quest() {
-  // const { quests } = useContext(UserContext);
-  const [quest, setQuest] = useState("Mantenho o foco em atividades que possuo maior domínio, mas não deixo de trabalhar pontos de melhoria em mim.");
+  const { loadingQuiz, quiz, quizResponse, setQuizResponse, submitQuiz } = useContext(QuestsContext);
+  const [quest, setQuest] = useState(null);
+  const [page, setPage] = useState(0);
+  const [selected, setSelected] = useState(false);
 
-  // useLayoutEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       const response = await api.get('/test');
-  //       console.log(response.data);
-  //       setTest(response.data);
-  //     } catch (e) {
-  //       console.error(e);
-  //     }
-  //   }
+  useLayoutEffect(() => {
+    setSelected(false);
+    
+    if(quizResponse[quiz[page].id]) {
+      document.querySelector(`input[value="${quizResponse[quiz[page].id]}"]`).checked = true;
+      setSelected(true);
+    }
+  }, [page]);
 
-  //   fetchData();
-  // }, []);
+  const handleChange = (event) => {
+    const check = event.target;
+    setQuizResponse({ ...quizResponse, [quiz[page].id]: check.value });
+    setSelected(true);
+  };
+
+  if (loadingQuiz) {
+    return (
+      <Container>
+        <VerticalCentered>
+          <Loader />
+        </VerticalCentered>
+      </Container>
+    );
+  }
 
   return (
-    <div>
-      <Container>
-        <Card>
-          <Title>Questão 3 de 8</Title>
-          <LabelLarge>
-            Mantenho o foco em atividades que possuo maior domínio, mas não deixo de trabalhar pontos de melhoria em mim?
-          </LabelLarge>
-          <CheckboxCustomizado
-            label='Empatia e Habilidade de Negociação'
-            name='resposta'
-            type='radio'
-            value=""
-          />
-          <CheckboxCustomizado
-            label='Pensamento Analítico'
-            name='resposta'
-            type='radio'
-          />
-            <CheckboxCustomizado
-              label='Comunicação'
-              name='resposta'
-              type='radio'
+    <Container>
+      <Card>
+        <Title>Questão {(page + 1)} de {quiz.length}</Title>
+        <LabelLarge>
+          {quiz[page].question}
+        </LabelLarge>
+        {
+          quiz[page].options.map(({ id, option }) => (
+            <CheckboxCustomizado key={id}
+              label={option}
+              name="resposta"
+              type="radio"
+              value={id}
+              checked={id == quizResponse[quiz[page].id]}
+              onClick={handleChange}
             />
-          <CheckboxCustomizado
-            label='Criatividade e Inovação'
-            name='resposta'
-            type='radio'
-          />
-          <CheckboxCustomizado
-            label='Gestão do Tempo'
-            name='resposta'
-            type='radio'
-          />
-
-          <AreaButton>
-            <ButtonSecondary onClick={() => {
-              console.log();
-            }}>
-              Voltar
+          ))
+        }
+        <AreaButton>
+          <ButtonSecondary
+            disabled={!page}
+            onClick={() => {
+              setPage(page - 1);
+            }}
+          >
+            Voltar
+          </ButtonSecondary>
+          {(page + 1) >= quiz.length ? (
+            <ButtonSecondary
+              disabled={!selected}
+              onClick={() => {
+                submitQuiz();
+              }}
+            >
+              Ver Resultado
             </ButtonSecondary>
-            <ButtonSecondary onClick={() => {
-              console.log();
-            }}>
+          ) : (
+            <ButtonSecondary
+              disabled={!selected}
+              title={selected ? "Avançar" : "Selecione uma opção para avançar"}
+              onClick={() => {
+                setPage(page + 1);
+              }}
+            >
               Próximo
             </ButtonSecondary>
-          </AreaButton>
-        </Card>
-      </Container>
-    </div>
+          )}
+        </AreaButton>
+      </Card>
+    </Container>
   )
 }
 

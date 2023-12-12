@@ -11,6 +11,7 @@ export const Container = styled.div`
 
 export const Card = styled.div`
   width: fit-content;
+  min-width: 400px;
   max-height: 500px;
   overflow-y: auto;
   margin-top: 72px;
@@ -19,22 +20,22 @@ export const Card = styled.div`
   background: #1f2124;
   border: 1px solid #cb9bde;
   border-radius: 6px;
-    
-    &::-webkit-scrollbar {
-    width: 6px; /* Largura da barra de rolagem */
-    }
-    &::-webkit-scrollbar-thumb {
-    background-color: #888; /* Cor da alça da barra de rolagem */
-    border-radius: 3px; /* Raio da alça da barra de rolagem */
-    }
 
-    &::-moz-scrollbar {
+  &::-webkit-scrollbar {
     width: 6px; /* Largura da barra de rolagem */
-    }
-    &::-moz-scrollbar-thumb {
+  }
+  &::-webkit-scrollbar-thumb {
     background-color: #888; /* Cor da alça da barra de rolagem */
     border-radius: 3px; /* Raio da alça da barra de rolagem */
-    }
+  }
+
+  &::-moz-scrollbar {
+    width: 6px; /* Largura da barra de rolagem */
+  }
+  &::-moz-scrollbar-thumb {
+    background-color: #888; /* Cor da alça da barra de rolagem */
+    border-radius: 3px; /* Raio da alça da barra de rolagem */
+  }
 `;
 
 export const Title = styled.h1`
@@ -157,7 +158,7 @@ export const Divisao = styled.div`
   height: 0px;
   border-bottom: 2px solid #cb9bde;
   background: unset;
-  margin: 16px 0px
+  margin: 16px 0px;
 `;
 
 export const IconGoogle = styled.img`
@@ -165,4 +166,3 @@ export const IconGoogle = styled.img`
   height: 20px;
   margin-right: 5px;
 `;
-

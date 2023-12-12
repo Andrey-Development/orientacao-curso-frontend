@@ -1,45 +1,101 @@
 import styled from "styled-components";
 
+export const Content = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 0;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 6px; /* Largura da barra de rolagem */
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #888; /* Cor da alça da barra de rolagem */
+    border-radius: 3px; /* Raio da alça da barra de rolagem */
+  }
+
+  &::-moz-scrollbar {
+    width: 6px; /* Largura da barra de rolagem */
+  }
+  &::-moz-scrollbar-thumb {
+    background-color: #888; /* Cor da alça da barra de rolagem */
+    border-radius: 3px; /* Raio da alça da barra de rolagem */
+  }
+`;
+
 export const Container = styled.div`
   width: 100%;
-  height: max-content;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 32px 48px;
-  
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: 80%;
+`;
 
-  &::-webkit-scrollbar {
-    width: 6px; /* Largura da barra de rolagem */
-    }
-    &::-webkit-scrollbar-thumb {
-    background-color: #888; /* Cor da alça da barra de rolagem */
-    border-radius: 3px; /* Raio da alça da barra de rolagem */
-    }
+export const Banner = styled.div`
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1361/284;
+  background-image: url("https://faculdadeam.edu.br/Content/images/como-ingressar/2024-1/banners/Site_Sinta_se_amf_2024.1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: 32px;
+`;
 
-    &::-moz-scrollbar {
-    width: 6px; /* Largura da barra de rolagem */
-    }
-    &::-moz-scrollbar-thumb {
-    background-color: #888; /* Cor da alça da barra de rolagem */
-    border-radius: 3px; /* Raio da alça da barra de rolagem */
-    }
+export const Row = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+  gap: 64px;
 `;
 
 export const Card = styled.div`
-  width: fit-content;
-  max-height: 500px;
-  max-width: 500px;
-  overflow-y: auto;
-  margin-top: 24px;
-  padding: 16px 24px;
+  width: 100%;
+  max-width: 570px;
+  height: 100%;
+  max-height: 570px;
+  border-radius: 3px;
+  overflow: hidden;
   background: #1f2124;
-  border: 1px solid #cb9bde;
-  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const CardBody = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-around;
+  padding: 16px;
+`;
+
+export const CardBodyDescription = styled.div`
+  width: 100%;
+  color: #cfcfd8;
+  font-size: 13px;
+  border-radius: 3px;
+  text-align: justify;
+  letter-spppacing: 0.5px;
+`;
+
+export const ImgBody = styled.div`
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  background-image: url("https://faculdadeam.edu.br/Content/images/como-ingressar/2024-1/capas/Post_Sinta_se_amf_2024.1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
 
 export const Title = styled.h1`
@@ -47,20 +103,23 @@ export const Title = styled.h1`
   font-size: 32px;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 16px;
 `;
 
-export const AreaInput = styled.div`
+export const CentralizedHorizontal = styled.div`
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  margin-bottom: 8px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const LabelLarge = styled.label`
   font-size: 18px;
   letter-spacing: 3px;
-  color: #cfcfd8;
-  margin-bottom: 10;
+  color: #fcfcf8;
+  letter-spacing: 0.1px;
+  margin-bottom: 12px;
 `;
 
 export const LabelInput = styled.label`
@@ -90,7 +149,7 @@ export const AreaButton = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 8px;
-  margin: 16px 0px 8px 0px;
+  margin: 32px 0px 8px 0px;
 `;
 
 export const ButtonPrimary = styled.button`
@@ -166,7 +225,7 @@ export const Divisao = styled.div`
   height: 0px;
   border-bottom: 2px solid #cb9bde;
   background: unset;
-  margin: 16px 0px
+  margin: 16px 0px;
 `;
 
 export const IconGoogle = styled.img`
@@ -174,4 +233,3 @@ export const IconGoogle = styled.img`
   height: 20px;
   margin-right: 5px;
 `;
-

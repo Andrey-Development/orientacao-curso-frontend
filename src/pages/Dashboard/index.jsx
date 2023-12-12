@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react';
 import CheckboxCustomizado from '../../components/Checkbox';
 import {
   Container
@@ -8,15 +8,27 @@ import {
   , AreaButton
   , ButtonPrimary
   , VerticalCentered
+  , CardHeader
+  , LabelMedium
 } from './styles';
 import { UserContext } from '../../contexts/AuthContext';
 import Loader from '../../components/Loader';
-import Header from '../../components/Header';
-import { Link } from 'react-router-dom';
+import { QuestsContext } from '../../contexts/QuestsContext';
 function Dashboard() {
-  const { loading, questsResponded } = useContext(UserContext);
+  const { loading, user } = useContext(UserContext);
+  const { responded, resultQuiz, loadingQuiz, fetchQuizzes, createQuiz } = useContext(QuestsContext);
+  const [quiz, setQuiz] = useState(null);
+  const [count, setCount] = useState(1);
 
-  if (loading) {
+  useEffect(() => {
+    setTimeout(() => {
+      fetchQuizzes();
+    }, 500);
+  }, [user]);
+
+
+
+  if (loading || loadingQuiz) {
     return (
       <Container>
         <VerticalCentered>
@@ -26,50 +38,32 @@ function Dashboard() {
     );
   }
 
-  console.log(questsResponded);
-  if (questsResponded.length > 0) {
+  if (responded && resultQuiz) {
     return (
       <Container>
-        <Card>
-          <AreaButton>
-            <LabelLarge>
-              1. Sistemas de Informação
-            </LabelLarge>
-          </AreaButton >
+        {Object.keys(resultQuiz).map((key) => (
+          <Card>
+            <CardHeader>
+              <LabelLarge>
+                {resultQuiz[key].nome}
+              </LabelLarge>
+              <div>
+                <LabelMedium>
+                  Pontos:
+                </LabelMedium>
+                <LabelMedium>
+                  {resultQuiz[key].value}
+                </LabelMedium>
+              </div>
+            </CardHeader>
 
-          <AreaButton>
-            <LabelInput>
-              O curso de Sistemas de Informação consiste, entre outros, no desenvolvimento e aplicação da computação em diversos setores (e/ou organizações), abrangendo os aspectos técnico, gerenciais e sociológicos.
-            </LabelInput>
-          </AreaButton>
-        </Card >
-        <Card>
-          <AreaButton>
-            <LabelLarge>
-              2. Ciências Contábeis
-            </LabelLarge>
-          </AreaButton>
-
-          <AreaButton>
-            <LabelInput>
-              O curso de Ciências Contábeis prepara profissionais para planejar e gerenciar as contas de empresas e pessoas físicas. Ao concluir o curso, o aluno estará apto a registrar e controlar as receitas, despesas e lucros de forma eficiente.
-            </LabelInput>
-          </AreaButton>
-        </Card>
-
-        <Card>
-          <AreaButton>
-            <LabelLarge>
-              3. Hotelaria
-            </LabelLarge>
-          </AreaButton>
-
-          <AreaButton>
-            <LabelInput>
-              O curso de Hotelaria é uma graduação de nível superior com titulação tecnológica e duração média entre dois e três anos. Ao longo desse período, o curso habilita o estudante a ser o profissional responsável pelo funcionamento e direção de hotéis, pousadas, spas e diferentes tipos de alojamento e estadia.
-            </LabelInput>
-          </AreaButton>
-        </Card>
+            <AreaButton>
+              <LabelInput>
+                {resultQuiz[key].descricao}
+              </LabelInput>
+            </AreaButton>
+          </Card>
+        ))}
       </Container>
     );
   }
@@ -83,11 +77,15 @@ function Dashboard() {
           </LabelLarge>
         </AreaButton >
         <AreaButton>
-          <Link to="/responder">
-            <ButtonPrimary>
+          {loadingQuiz ? (
+            <ButtonPrimary disabled>
+              <Loader />
+            </ButtonPrimary>
+          ) : (
+            <ButtonPrimary onClick={() => createQuiz()}>
               Responder agora
             </ButtonPrimary>
-          </Link>
+          )}
         </AreaButton>
       </VerticalCentered>
     </Container>

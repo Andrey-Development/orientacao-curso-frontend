@@ -20,7 +20,11 @@ import {
 import Loader from '../../components/Loader';
 
 function Login() {
-  const { user, setUser, loading, ResgatarPontos } = useContext(UserContext);
+  const { user, setUser, loading, SumUserPoints } = useContext(UserContext);
+
+  const SubmitPoints = async () => {
+    SumUserPoints(user.email, 10);
+  }
 
   return (
     <Container>
@@ -32,13 +36,13 @@ function Login() {
           placeholder='Digite seu E-mail...'
           value={user.email}
           onChange={(value) => {
-            setUser({...user, email: value.currentTarget.value});
+            setUser({ ...user, email: value.currentTarget.value });
           }}
         />
 
         <AreaButton>
           <ButtonPrimary onClick={() => {
-            ResgatarPontos();
+            SubmitPoints();
           }}
           >
             {loading ? <Loader /> : "Submeter Pontos"}

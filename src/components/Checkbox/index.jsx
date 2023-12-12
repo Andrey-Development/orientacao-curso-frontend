@@ -10,6 +10,7 @@ function Input(props) {
                 type={props.type?? string}
                 value={props.value?? ''}
                 onChange={props.onChange}
+                onClick={props.onClick}
             />
             <LabelLarge>{props.label}</LabelLarge>
         </AreaInput>

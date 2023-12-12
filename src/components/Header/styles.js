@@ -42,3 +42,22 @@ export const ButtonPrimary = styled.button`
     background: rgb(130, 87, 229);
   }
 `;
+
+export const DivRanking = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+`;
+
+export const LabelHeader = styled.label`
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  color: #cfcfd8;
+`;
+
+export const LabelHeaderLogoff = styled.label`
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  color: #cfcfd8;
+`;
